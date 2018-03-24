@@ -19,6 +19,6 @@ outToServer.flush();
 str2=inTosrvr.readUTF();  
 System.out.println("Server says: "+str2);  
 }  
-  dout.close();  
+dout.close();  
 s.close();
 }}
