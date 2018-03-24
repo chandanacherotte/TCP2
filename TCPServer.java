@@ -6,5 +6,9 @@ class TCPServer {
   String clientSentence;
   String capitalizedSentence;
   ServerSocket welcomeSocket = new ServerSocket(6789);
+  System.out.println("Welcome Client");
+  while (true) {
+   Socket connectionSocket = welcomeSocket.accept();
+   }
   }
   }
