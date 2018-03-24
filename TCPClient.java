@@ -8,10 +8,16 @@ class TCPClient {
   BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
   Socket clientSocket = new Socket("localhost", 6789);
   System.out.println("Enter a message: ");
+DataInputStream inTosrvr=new DataInputStream(clientSocket.getInputStream());  
   DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
   BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-  sentence = inFromUser.readLine();
-  outToServer.writeBytes(sentence + '\n');
-  modifiedSentence = inFromServer.readLine();
-  System.out.println("FROM SERVER: " + modifiedSentence);
+  String str="",str2="";  
+while(!str.equals("stop")){  
+str=inFromServer.readLine();  
+outToServer.writeUTF(str);  
+outToServer.flush();  
+str2=inTosrvr.readUTF();  
+System.out.println("Server says: "+str2);  
+}  
+  
 }}
